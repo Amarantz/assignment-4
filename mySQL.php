@@ -11,9 +11,12 @@ function fDvdInsertToDatabase($asin,$title,$price) {
 
 }
 
-function fDeleteFromDatabase() {
-  $sql = "DELETE FROM tblCustomers WHERE CustID=$deleteID";
-  // TODO: Fill in the rest of the function
+function fDeleteFromDvdTitlesDatabase($asin ) {
+  $sql = "DELETE FROM dvdtitles WHERE asin=:asin";
+  $write = fConnectToDatabase('WRITE');
+  $stmt = $write->prepare($sql);
+  $stmt->bindParam(':asin',$asin);
+  $stmt->execute();
 }
 
 function fDvdListFromDatabase() {

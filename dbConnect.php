@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 $DB_PERMISSION_WRITE = 'WRITE';
 $DB_PERMISSION_READ = 'READ';
 // database functions ************************************************
@@ -20,3 +21,15 @@ function fConnectToDatabase($permission)
     }
 
 }
+=======
+
+// database functions ************************************************
+
+function fConnectToDatabase() {
+   $db = new PDO("mysql:host=localhost;dbname=testdb', 'username', 'password');
+   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+   $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+   return $db;
+}
+?>
+>>>>>>> 2e34a21fbe6558dadca1afba9666d79050003e80

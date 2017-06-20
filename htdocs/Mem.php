@@ -1,10 +1,19 @@
 <?php
 
-include "persistence_interface.php"
-class Mem implements "persistence_interface.php"
+include "persistence_interface.php";
+class Mem implements persistence_interface
 {
-    protected $buf[];
+    private $type;
 
+    protected $buf;
+
+    public function __construct($item){
+        $this->buf[$item->asin] = $item;
+    }
+
+    public function Count(){
+        return count($this->buf);
+    }
     public function Create($item)
     {
         $this->buf[] = $item;
@@ -15,8 +24,21 @@ class Mem implements "persistence_interface.php"
         return $this->buf[$id];
     }
 
-    public function ReadAll()
-{
+    public function ReadAll(){
+        return $this->buf;
+    }
 
-}
+    public function Update($id, $value)
+    {
+        //todo update function
+    }
+
+    public function Delete($id){
+
+    }
+
+    public function Clear(){
+        unset($this->buf);
+    }
+
 }

@@ -45,4 +45,15 @@ function fDvdActorInsertToDatabase($fname,$lname) {
     $statement = $write->query($sql);
 
 }
+
+function listDVDAndActors()
+{
+    $read = fConnectToDatabase('READ');
+    $sql = "select dt.title, a.fname, a.lastname from dvdtitles dt inner join dvdActors da on da.asin = dt.asin inner join Actors a on a.actorID = da.actorID";
+    $statement = $read->query($sql);
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $results;
+
+}
+
 ?>
